@@ -41,7 +41,11 @@ const slides = [
     description:
       "Confused about your outfit? Don't worry! Find the best outfit here!",
     color: '#BFEAF5',
-    picture: require('./assets/1.png'),
+    picture: {
+      src: require('./assets/1.png'),
+      width: 2513,
+      height: 3538,
+    },
   },
   {
     title: 'Playfull',
@@ -49,7 +53,11 @@ const slides = [
     description:
       'Haiting the clothes in your wardrobe? Explore hundreds of outfit ideas.',
     color: '#BEECC4',
-    picture: require('./assets/2.png'),
+    picture: {
+      src: require('./assets/2.png'),
+      width: 2791,
+      height: 3744,
+    },
   },
   {
     title: 'Excentric',
@@ -57,7 +65,11 @@ const slides = [
     description:
       'Create your individual & unique style and look amazing everyday',
     color: '#FFE4D9',
-    picture: require('./assets/3.png'),
+    picture: {
+      src: require('./assets/3.png'),
+      width: 2738,
+      height: 4144,
+    },
   },
   {
     title: 'Funky',
@@ -65,7 +77,11 @@ const slides = [
     description:
       'Discovery the latest trends in fashion and explore your personality',
     color: '#FFDDDD',
-    picture: require('./assets/4.png'),
+    picture: {
+      src: require('./assets/4.png'),
+      width: 1754,
+      height: 2551,
+    },
   },
 ];
 
