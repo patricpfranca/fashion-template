@@ -12,6 +12,7 @@ import Slide, { SLIDE_HEIGHT } from './Slide';
 import Subslide from './Subslide';
 import Dot from './Dot';
 import { theme } from '../../components';
+import { StackNavigationProps, Routes } from '../../components/Navigation';
 
 const { width } = Dimensions.get('window');
 const styles = StyleSheet.create({
@@ -55,7 +56,7 @@ const slides = [
       "Confused about your outfit? Don't worry! Find the best outfit here!",
     color: '#BFEAF5',
     picture: {
-      src: require('./assets/1.png'),
+      src: require('../assets/1.png'),
       width: 2513,
       height: 3538,
     },
@@ -67,7 +68,7 @@ const slides = [
       'Haiting the clothes in your wardrobe? Explore hundreds of outfit ideas.',
     color: '#BEECC4',
     picture: {
-      src: require('./assets/2.png'),
+      src: require('../assets/2.png'),
       width: 2791,
       height: 3744,
     },
@@ -79,7 +80,7 @@ const slides = [
       'Create your individual & unique style and look amazing everyday',
     color: '#FFE4D9',
     picture: {
-      src: require('./assets/3.png'),
+      src: require('../assets/3.png'),
       width: 2738,
       height: 4144,
     },
@@ -91,14 +92,18 @@ const slides = [
       'Discovery the latest trends in fashion and explore your personality',
     color: '#FFDDDD',
     picture: {
-      src: require('./assets/4.png'),
+      src: require('../assets/4.png'),
       width: 1754,
       height: 2551,
     },
   },
 ];
 
-const Onboarding = () => {
+export const assets = slides.map((slide) => slide.picture.src);
+
+const Onboarding = ({
+  navigation,
+}: StackNavigationProps<Routes, 'Onboarding'>) => {
   const scroll = useRef<Animated.ScrollView>(null);
   const { scrollHandler, x } = useScrollHandler();
   const backgroundColor = interpolateColor(x, {
@@ -163,20 +168,24 @@ const Onboarding = () => {
               width: width * slides.length,
               transform: [{ translateX: multiply(x, -1) }],
             }}>
-            {slides.map(({ subtitle, description }, index) => (
-              <Subslide
-                key={index}
-                onPress={() => {
-                  if (scroll.current) {
-                    scroll.current
-                      .getNode()
-                      .scrollTo({ x: width * (index + 1), animated: true });
-                  }
-                }}
-                last={index === slides.length - 1}
-                {...{ subtitle, description }}
-              />
-            ))}
+            {slides.map(({ subtitle, description }, index) => {
+              const last = index === slides.length - 1;
+              return (
+                <Subslide
+                  key={index}
+                  onPress={() => {
+                    if (last) {
+                      navigation.navigate('Welcome');
+                    } else {
+                      scroll.current
+                        ?.getNode()
+                        .scrollTo({ x: width * (index + 1), animated: true });
+                    }
+                  }}
+                  {...{ subtitle, description, last }}
+                />
+              );
+            })}
           </Animated.View>
         </View>
       </View>
