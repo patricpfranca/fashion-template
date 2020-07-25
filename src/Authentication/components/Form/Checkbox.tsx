@@ -7,15 +7,13 @@ import { StyleSheet } from 'react-native';
 
 interface CheckboxProps {
   label: string;
+  checked: boolean;
+  onChange: () => void;
 }
 
-const Checkbox = ({ label }: CheckboxProps) => {
-  const [checked, setChecked] = useState(false);
-
+const Checkbox = ({ label, onChange, checked }: CheckboxProps) => {
   return (
-    <RectButton
-      onPress={() => setChecked((c) => !c)}
-      style={{ justifyContent: 'center' }}>
+    <RectButton onPress={() => onChange()} style={{ justifyContent: 'center' }}>
       <Box flexDirection="row" alignItems="center">
         <Box
           marginRight="m"
@@ -27,11 +25,9 @@ const Checkbox = ({ label }: CheckboxProps) => {
           borderWidth={StyleSheet.hairlineWidth}
           borderColor="primary"
           backgroundColor={checked ? 'primary' : 'white'}>
-          <Icon name="check" />
+          <Icon name="check" color="white" />
         </Box>
-        <Text variant="button" color="white">
-          {label}
-        </Text>
+        <Text variant="button">{label}</Text>
       </Box>
     </RectButton>
   );
