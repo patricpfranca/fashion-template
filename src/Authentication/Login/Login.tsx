@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
@@ -29,6 +29,7 @@ const Login = () => {
     initialValues: { email: '', password: '', remember: true },
     onSubmit: (values) => console.log(values),
   });
+  const passwordRef = useRef<typeof TextInput>(null);
 
   const footer = (
     <Footer
@@ -56,16 +57,27 @@ const Login = () => {
               onBlur={handleBlur('email')}
               error={errors.email}
               touched={touched.email}
+              autoCompleteType="email"
+              keyboardType="email-address"
               autoCapitalize="none"
+              returnKeyType="next"
+              returnKeyLabel="next"
+              onSubmitEditing={() => passwordRef.current?.focus()}
             />
           </Box>
           <TextInput
+            ref={passwordRef}
             icon="lock"
             placeholder="Enter your Password"
             onChangeText={handleChange('password')}
             onBlur={handleBlur('password')}
             error={errors.password}
             touched={touched.password}
+            autoCompleteType="password"
+            returnKeyType="go"
+            returnKeyLabel="go"
+            onSubmitEditing={() => handleSubmit()}
+            secureTextEntry
           />
           <Box flexDirection="row" justifyContent="space-between">
             <Checkbox
