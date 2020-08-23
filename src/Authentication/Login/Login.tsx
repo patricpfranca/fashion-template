@@ -6,6 +6,7 @@ import { Container, Button, Text, Box } from '../../components';
 import TextInput from '../components/Form/TextInput';
 import Checkbox from '../components/Form/Checkbox';
 import Footer from '../components/Footer';
+import { StackNavigationProps, Routes } from '../../components/Navigation';
 
 const LoginSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email').required('Required'),
@@ -15,7 +16,7 @@ const LoginSchema = Yup.object().shape({
     .required('Required'),
 });
 
-const Login = () => {
+const Login = ({ navigation }: StackNavigationProps<Routes, 'Login'>) => {
   const {
     handleChange,
     handleBlur,
@@ -35,7 +36,7 @@ const Login = () => {
     <Footer
       title="Don't have an account?"
       action="Sign Up"
-      onPress={() => true}
+      onPress={() => navigation.navigate('SignUp')}
     />
   );
 

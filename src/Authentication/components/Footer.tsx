@@ -18,7 +18,7 @@ const Footer = ({ onPress, title, action }: FooterProps) => {
         <TouchableWithoutFeedback {...{ onPress }}>
           <Text variant="button" color="white">
             <Text>{`${title} `}</Text>
-            <Text color="primary">${action}</Text>
+            <Text color="primary">{action}</Text>
           </Text>
         </TouchableWithoutFeedback>
       </Box>
