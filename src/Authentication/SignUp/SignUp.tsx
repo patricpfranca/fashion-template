@@ -4,7 +4,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
 import { Container, Button, Text, Box } from '../../components';
-import TextInput from '../components/Form/TextInput';
+import TextInput from '../../components/Form/TextInput';
 import Footer from '../components/Footer';
 import { StackNavigationProps, Routes } from '../../components/Navigation';
 
@@ -44,7 +44,7 @@ const SignUp = ({ navigation }: StackNavigationProps<Routes, 'SignUp'>) => {
   );
 
   return (
-    <Container {...{ footer }}>
+    <Container pattern={1} {...{ footer }}>
       <Box padding="xl">
         <Text variant="title1" textAlign="center" marginBottom="l">
           Create account

@@ -5,7 +5,7 @@ import * as Yup from 'yup';
 
 import Footer from '../components/Footer';
 import { Container, Button, Text, Box } from '../../components';
-import TextInput from '../components/Form/TextInput';
+import TextInput from '../../components/Form/TextInput';
 import { StackNavigationProps, Routes } from '../../components/Navigation';
 
 const ForgotPasswordSchema = Yup.object().shape({
@@ -37,7 +37,7 @@ const ForgotPassword = ({
   );
 
   return (
-    <Container {...{ footer }}>
+    <Container pattern={2} {...{ footer }}>
       <Box padding="xl" justifyContent="center" flex={1}>
         <Text variant="title1" textAlign="center" marginBottom="l">
           Forgot password?
