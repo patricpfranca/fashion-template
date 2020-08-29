@@ -38,7 +38,7 @@ const TextInput = forwardRef<RNTextInput, TextInputProps>(
             underlineColorAndroid="transparent"
             placeholderTextColor={color}
             {...{ ref }}
-            {...{ props }}
+            {...props}
           />
         </Box>
         {touched && (
