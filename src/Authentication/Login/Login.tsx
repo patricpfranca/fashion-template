@@ -8,6 +8,7 @@ import TextInput from '../../components/Form/TextInput';
 import Checkbox from '../../components/Form/Checkbox';
 import Footer from '../components/Footer';
 import { StackNavigationProps, Routes } from '../../components/Navigation';
+import { BorderlessButton } from 'react-native-gesture-handler';
 
 const LoginSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email').required('Required'),
@@ -81,17 +82,22 @@ const Login = ({ navigation }: StackNavigationProps<Routes, 'Login'>) => {
             onSubmitEditing={() => handleSubmit()}
             secureTextEntry
           />
-          <Box flexDirection="row" justifyContent="space-between">
+          <Box
+            flexDirection="row"
+            justifyContent="space-between"
+            alignItems="center"
+            marginVertical="m">
             <Checkbox
               label="Remember me"
               checked={values.remember}
               onChange={() => setFieldValue('remember', !values.remember)}
             />
-            <Button
-              variant="transparent"
+            <BorderlessButton
               onPress={() => navigation.navigate('ForgotPassword')}>
-              <Text color="primary">Forgot password</Text>
-            </Button>
+              <Text variant="button" color="primary">
+                Forgot password
+              </Text>
+            </BorderlessButton>
           </Box>
           <Box alignItems="center" marginTop="m">
             <Button

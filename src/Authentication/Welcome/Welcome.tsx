@@ -3,6 +3,7 @@ import { Image, Dimensions } from 'react-native';
 import { Box, Text, useTheme } from '../../components/Theme';
 import { Button } from '../../components';
 import { StackNavigationProps, Routes } from '../../components/Navigation';
+import { BorderlessButton } from 'react-native-gesture-handler';
 
 const picture = {
   src: require('../assets/5.png'),
@@ -57,12 +58,16 @@ const Welcome = ({ navigation }: StackNavigationProps<Routes, 'Welcome'>) => {
             label="Have an account? Login"
             onPress={() => navigation.navigate('Login')}
           />
-          <Button label="Join us, it's Free" onPress={() => true} />
           <Button
-            variant="transparent"
-            label="Forgot password?"
-            onPress={() => true}
+            label="Join us, it's Free"
+            onPress={() => navigation.navigate('SignUp')}
           />
+          <BorderlessButton
+            onPress={() => navigation.navigate('ForgotPassword')}>
+            <Text variant="button" color="secondary">
+              Forgot password?
+            </Text>
+          </BorderlessButton>
         </Box>
       </Box>
     </Box>

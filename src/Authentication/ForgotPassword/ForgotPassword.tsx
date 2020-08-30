@@ -15,18 +15,13 @@ const ForgotPasswordSchema = Yup.object().shape({
 const ForgotPassword = ({
   navigation,
 }: StackNavigationProps<Routes, 'ForgotPassword'>) => {
-  const {
-    handleChange,
-    handleBlur,
-    handleSubmit,
-    errors,
-    touched,
-    values,
-  } = useFormik({
-    validationSchema: ForgotPasswordSchema,
-    initialValues: { email: '' },
-    onSubmit: () => navigation.navigate('PasswordChanged'),
-  });
+  const { handleChange, handleBlur, handleSubmit, errors, touched } = useFormik(
+    {
+      validationSchema: ForgotPasswordSchema,
+      initialValues: { email: '' },
+      onSubmit: () => navigation.navigate('PasswordChanged'),
+    }
+  );
 
   const footer = (
     <Footer
