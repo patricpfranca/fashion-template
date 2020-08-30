@@ -6,7 +6,10 @@ import * as Yup from 'yup';
 import { Container, Button, Text, Box } from '../../components';
 import TextInput from '../../components/Form/TextInput';
 import Footer from '../components/Footer';
-import { StackNavigationProps, Routes } from '../../components/Navigation';
+import {
+  StackNavigationProps,
+  AuthenticationRoutes,
+} from '../../components/Navigation';
 
 const SignUpSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email').required('Required'),
@@ -19,7 +22,9 @@ const SignUpSchema = Yup.object().shape({
     .required('Required'),
 });
 
-const SignUp = ({ navigation }: StackNavigationProps<Routes, 'SignUp'>) => {
+const SignUp = ({
+  navigation,
+}: StackNavigationProps<AuthenticationRoutes, 'SignUp'>) => {
   const { handleChange, handleBlur, handleSubmit, errors, touched } = useFormik(
     {
       validationSchema: SignUpSchema,

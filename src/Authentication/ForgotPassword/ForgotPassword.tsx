@@ -6,7 +6,10 @@ import * as Yup from 'yup';
 import Footer from '../components/Footer';
 import { Container, Button, Text, Box } from '../../components';
 import TextInput from '../../components/Form/TextInput';
-import { StackNavigationProps, Routes } from '../../components/Navigation';
+import {
+  StackNavigationProps,
+  AuthenticationRoutes,
+} from '../../components/Navigation';
 
 const ForgotPasswordSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email').required('Required'),
@@ -14,7 +17,7 @@ const ForgotPasswordSchema = Yup.object().shape({
 
 const ForgotPassword = ({
   navigation,
-}: StackNavigationProps<Routes, 'ForgotPassword'>) => {
+}: StackNavigationProps<AuthenticationRoutes, 'ForgotPassword'>) => {
   const { handleChange, handleBlur, handleSubmit, errors, touched } = useFormik(
     {
       validationSchema: ForgotPasswordSchema,

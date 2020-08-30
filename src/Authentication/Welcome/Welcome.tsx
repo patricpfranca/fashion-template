@@ -2,7 +2,10 @@ import React from 'react';
 import { Image, Dimensions } from 'react-native';
 import { Box, Text, useTheme } from '../../components/Theme';
 import { Button } from '../../components';
-import { StackNavigationProps, Routes } from '../../components/Navigation';
+import {
+  StackNavigationProps,
+  AuthenticationRoutes,
+} from '../../components/Navigation';
 import { BorderlessButton } from 'react-native-gesture-handler';
 
 const picture = {
@@ -13,7 +16,9 @@ const picture = {
 export const assets = [picture.src];
 const { width } = Dimensions.get('window');
 
-const Welcome = ({ navigation }: StackNavigationProps<Routes, 'Welcome'>) => {
+const Welcome = ({
+  navigation,
+}: StackNavigationProps<AuthenticationRoutes, 'Welcome'>) => {
   const theme = useTheme();
 
   return (

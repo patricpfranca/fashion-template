@@ -1,4 +1,8 @@
 import React, { useRef } from 'react';
+import { BorderlessButton } from 'react-native-gesture-handler';
+import { CompositeNavigationProp } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { DrawerNavigationProp } from '@react-navigation/drawer';
 import { TextInput as RNTextInput } from 'react-native';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
@@ -7,8 +11,7 @@ import { Container, Button, Text, Box } from '../../components';
 import TextInput from '../../components/Form/TextInput';
 import Checkbox from '../../components/Form/Checkbox';
 import Footer from '../components/Footer';
-import { StackNavigationProps, Routes } from '../../components/Navigation';
-import { BorderlessButton } from 'react-native-gesture-handler';
+import { AuthenticationRoutes, HomeRoutes } from '../../components/Navigation';
 
 const LoginSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email').required('Required'),
@@ -18,7 +21,14 @@ const LoginSchema = Yup.object().shape({
     .required('Required'),
 });
 
-const Login = ({ navigation }: StackNavigationProps<Routes, 'Login'>) => {
+interface LoginProps {
+  navigation: CompositeNavigationProp<
+    StackNavigationProp<AuthenticationRoutes, 'Login'>,
+    DrawerNavigationProp<HomeRoutes, 'OutfitIdeas'>
+  >;
+}
+
+const Login = ({ navigation }: LoginProps) => {
   const {
     handleChange,
     handleBlur,
@@ -30,7 +40,7 @@ const Login = ({ navigation }: StackNavigationProps<Routes, 'Login'>) => {
   } = useFormik({
     validationSchema: LoginSchema,
     initialValues: { email: '', password: '', remember: true },
-    onSubmit: navigation.navigate('Home'),
+    onSubmit: () => navigation.navigate('OutfitIdeas'),
   });
   const passwordRef = useRef<RNTextInput>(null);
 
