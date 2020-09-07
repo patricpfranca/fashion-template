@@ -4,6 +4,7 @@ import { Image, Dimensions } from 'react-native';
 import { Box, Text, Header } from '../../components';
 import DrawerItem, { DrawerItemProps } from './DrawerItem';
 import { theme } from '../../components/Theme';
+import { DrawerActions, useNavigation } from '@react-navigation/native';
 
 export const assets = [require('../../components/assets/patterns/1.png')];
 
@@ -47,6 +48,8 @@ const items: DrawerItemProps[] = [
 ];
 
 const Drawer = () => {
+  const navigation = useNavigation();
+
   return (
     <Box flex={1}>
       <Box flex={0.2} backgroundColor="white">
@@ -60,8 +63,12 @@ const Drawer = () => {
           backgroundColor="secondary">
           <Header
             title="menu"
-            left={{ icon: 'x', onPress: () => true }}
+            left={{
+              icon: 'x',
+              onPress: () => navigation.dispatch(DrawerActions.closeDrawer),
+            }}
             right={{ icon: 'shopping-bag', onPress: () => true }}
+            dark
           />
         </Box>
       </Box>
