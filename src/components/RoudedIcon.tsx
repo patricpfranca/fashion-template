@@ -8,6 +8,7 @@ export interface RoudedIconProps {
   size: number;
   color: keyof Theme['colors'];
   backgroundColor: string;
+  iconRatio: number;
 }
 
 const RoudedIcon = ({
@@ -15,8 +16,9 @@ const RoudedIcon = ({
   size,
   color,
   backgroundColor,
+  iconRatio,
 }: RoudedIconProps) => {
-  const iconSize = size * 0.7;
+  const iconSize = size * iconRatio;
 
   return (
     <Box
@@ -32,6 +34,10 @@ const RoudedIcon = ({
       </Text>
     </Box>
   );
+};
+
+RoudedIcon.defaultProps = {
+  iconRatio: 0.7,
 };
 
 export default RoudedIcon;
