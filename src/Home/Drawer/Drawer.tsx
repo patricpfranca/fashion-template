@@ -47,9 +47,11 @@ const items: DrawerItemProps[] = [
   { icon: 'log-out', label: 'Logout', screen: 'Logout', color: 'secondary' },
 ];
 
-const Drawer = () => {
-  const navigation = useNavigation();
+interface DrawerProps {
+  navigation: any;
+}
 
+const Drawer = ({ navigation }: DrawerProps) => {
   return (
     <Box flex={1}>
       <Box flex={0.2} backgroundColor="white">
@@ -84,15 +86,14 @@ const Drawer = () => {
           borderTopLeftRadius="xl"
           borderBottomRightRadius="xl"
           justifyContent="center"
-          padding="xl">
+          padding="l">
           <Box
             position="absolute"
             left={DRAWER_WIDTH / 2 - 50}
-            bottom={-50}
-            backgroundColor="primary"
+            top={-50}
             width={100}
             height={100}
-            style={{ borderRadius: 50 }}
+            style={{ borderRadius: 50, backgroundColor: theme.colors.orange }}
           />
           <Box marginVertical="m">
             <Text variant="title1" textAlign="center">

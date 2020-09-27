@@ -8,12 +8,14 @@ import { OutfitIdeas } from './OutfitIdeas';
 export { assets } from './Drawer';
 
 const Drawer = createDrawerNavigator<HomeRoutes>();
+
 export const HomeNavigator = () => (
   <Drawer.Navigator
     drawerContent={DrawerContent}
     drawerStyle={{
       width: DRAWER_WIDTH,
-    }}>
+    }}
+    initialRouteName="OutfitIdeas">
     <Drawer.Screen name="OutfitIdeas" component={OutfitIdeas} />
   </Drawer.Navigator>
 );

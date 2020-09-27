@@ -21,7 +21,6 @@ export type AppRoutes = {
   Authentication: undefined;
   Home: undefined;
 };
-
 export type AuthenticationRoutes = {
   Onboarding: undefined;
   Welcome: undefined;
@@ -33,4 +32,7 @@ export type AuthenticationRoutes = {
 
 export type HomeRoutes = {
   OutfitIdeas: undefined;
+  FavoritesOutfits: undefined;
+  TransactionHistory: undefined;
+  EditProfile: undefined;
 };

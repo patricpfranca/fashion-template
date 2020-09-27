@@ -3,7 +3,7 @@ import { StyleSheet, View, Image } from 'react-native';
 
 import { Box, useTheme } from '../../components';
 
-const OutfitIdeas = () => {
+const Background = () => {
   const theme = useTheme();
 
   return (
@@ -15,7 +15,7 @@ const OutfitIdeas = () => {
         <Box flex={1} backgroundColor="white" />
         <Box flex={1} backgroundColor="secondary" />
         <Image
-          source={require('../../Authentication/assets/2.png')}
+          source={require('../../components/assets/patterns/1.png')}
           style={{
             ...StyleSheet.absoluteFillObject,
             width: undefined,
@@ -32,4 +32,4 @@ const OutfitIdeas = () => {
   );
 };
 
-export default OutfitIdeas;
+export default Background;

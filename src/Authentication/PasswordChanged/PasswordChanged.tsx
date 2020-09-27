@@ -1,9 +1,6 @@
 import React from 'react';
 
-import {
-  AuthenticationRoutes,
-  StackNavigationProps,
-} from '../../components/Navigation';
+import { AuthNavigationProps } from '../../components/Navigation';
 import {
   Container,
   Box,
@@ -17,7 +14,7 @@ const SIZE = 80;
 
 const PasswordChanged = ({
   navigation,
-}: StackNavigationProps<AuthenticationRoutes, 'PasswordChanged'>) => {
+}: AuthNavigationProps<'PasswordChanged'>) => {
   return (
     <Container
       pattern={0}
